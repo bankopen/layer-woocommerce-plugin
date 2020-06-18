@@ -83,7 +83,7 @@ Class LayerApi{
             return $this->http_get("payment/".$payment_id);
 
         } catch (Exception $e){
-
+			
             return [
                 'error' => $e->getMessage()
             ];
@@ -201,19 +201,24 @@ Class LayerApi{
 
                     $error_body = json_decode($response['body'],true);
 
+                    if(isset($error_body['error'])){
 
-                    foreach ($error_body['error'] as $err){
-
-                        if(isset($err[0])){
-
-                            $error = $err[0];
-                        }
+                            $error = $error_body['error'];
+							$erdesc=" :: ";
+							
+							if(isset($error_body['error_data']))
+							{
+								foreach($error_body['error_data'] as $err)
+								{
+									$erdesc .= $err[0].' ';
+								}
+							}
+							$error .=$erdesc;
                     }
-
 
                     return [
                         "error" => $error,
-                        "error_data" => $response,
+						"error_data" => $error_body['error_data'],
                     ];
 
                 }
