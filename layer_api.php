@@ -1,9 +1,7 @@
 <?php
 /*
- * Plugin Name: Layer Payment Gateway
- * Plugin URI: https://open.money/
- * Description: Open's Layer Payment Gateway integration for WooCommerce
- * Version: 1.0.1
+ * Class File: Open Payment Gateway Class
+ * Version: 1.0.2
  * Author: Openers
  * Author URI: https://open.money/
 */
