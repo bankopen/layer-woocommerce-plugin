@@ -38,9 +38,9 @@ function layer_activation_check(){
         global $wp_version;
         $wc_plugin_details = [];
 
-        if($php_version < (int)7){
+        if($php_version < (int)5){
 
-            throw new Exception("Layer Payments only supports PHP 7+");
+            throw new Exception("Layer Payments only supports PHP 5+");
         }
 
         if ( !class_exists( 'woocommerce' ) ){
@@ -176,11 +176,11 @@ function layer_init_gateway_class() {
 
             if( $this->sandbox != "yes"){
 
-                wp_enqueue_script( 'layer_js', 'https://payments.open.money/layer',"","",false);
+                wp_enqueue_script( 'layer_script', 'https://payments.open.money/layer',"","",false);
 
             } else {
 
-                wp_enqueue_script( 'layer_js', 'https://sandbox-payments.open.money/layer',"","",false);
+                wp_enqueue_script( 'layer_script', 'https://sandbox-payments.open.money/layer',"","",false);
 
             }
 
@@ -223,7 +223,7 @@ function layer_init_gateway_class() {
                 'currency' => $order->get_currency(),
                 'name'  => $order->get_formatted_billing_full_name(),
                 'email_id' => $order->get_billing_email(),
-                'contact_number' => $order->get_billing_phone(),
+                'contact_number' => $order->get_billing_phone(),				
                 'udf'   => [
                     'woocommerce_order_id'  => $order->get_id(),
                     'woocommerce_order_key'  => $order->get_order_key(),

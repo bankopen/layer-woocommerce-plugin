@@ -20,13 +20,13 @@ Class LayerApi{
 
         try {
             $pay_token_request_data = array(
-                'amount'   			=> $data['amount'] ?? NULL,
-                'currency' 			=> $data['currency'] ?? NULL,
-                'name'     			=> $data['name'] ?? NULL,
-                'email_id' 			=> $data['email_id'] ?? NULL,
-                'contact_number' 	=> $data['contact_number'] ?? NULL,
-                'mtx'    			=> $data['mtx'] ?? NULL,
-                'udf'    			=> $data['udf'] ?? NULL,
+                'amount'   			=> ($data['amount'])? $data['amount'] : NULL,
+                'currency' 			=> ($data['currency'])? $data['currency'] : NULL,
+                'name'     			=> ($data['name'])? $data['name'] : NULL,
+                'email_id' 			=> ($data['email_id'])? $data['email_id'] : NULL,
+                'contact_number' 	=> ($data['contact_number'])? $data['contact_number'] : NULL,
+                'mtx'    			=> ($data['mtx'])? $data['mtx'] : NULL,
+                'udf'    			=> ($data['udf'])? $data['udf'] : NULL,
             );
 
             $pay_token_data = $this->http_post($pay_token_request_data,"payment_token");
