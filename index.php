@@ -176,11 +176,11 @@ function layer_init_gateway_class() {
 
             if( $this->sandbox != "yes"){
 
-                wp_enqueue_script( 'layer_script', 'https://payments.open.money/layer',"","",false);
+                wp_enqueue_script( 'layer_js', 'https://payments.open.money/layer',"","",false);
 
             } else {
 
-                wp_enqueue_script( 'layer_script', 'https://sandbox-payments.open.money/layer',"","",false);
+                wp_enqueue_script( 'layer_js', 'https://sandbox-payments.open.money/layer',"","",false);
 
             }
 
